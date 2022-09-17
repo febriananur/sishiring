@@ -1,4 +1,5 @@
- <!-- Content Wrapper. Contains page content -->
+
+<!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -16,6 +17,7 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+
     <!-- /.content-header -->
 
     <!-- Main content -->
@@ -28,29 +30,25 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="<?php echo base_url() . 'superadmin/input/tambah'; ?>" enctype='multipart/form-data' method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="posisi">Posisi</label>
-                    <input type="text" class="form-control" id="posisi" placeholder="posisi">
+                    <label for="posisi_kosong">Posisi</label>
+                    <input type="text" class="form-control" id="posisi_kosong" name="posisi_kosong" placeholder="posisi">
                   </div>
                   <div class="form-group">
-                    <label for="Dept">Dept</label>
-                    <input type="text" class="form-control" id="Dept" placeholder="departement">
+                    <label for="departemen_kosong">Departemen</label>
+                    <input type="text" class="form-control" id="departemen_kosong" name="departemen_kosong" placeholder="departement">
                   </div>
                   <div class="form-group">
                     <label for="Kuota">Kuota</label>
-                    <input type="number" class="form-control" id="Kuota" placeholder="Kuota">
+                    <input type="number" class="form-control" id="kuota" name="kuota" placeholder="Kuota">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Upload Gambar</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
+                            <input type="file" value="<?php echo base_url(); ?>upload/logo.png" name="foto" id="foto" class="form-control">
                       </div>
                     </div>
                   </div>
@@ -62,6 +60,7 @@
               </form>
          </div>
 
+
          <div class="card">
               <div class="card-header bg-primary">
                 <h3 class="card-title">Data kekosongan Jabatan</h3>
@@ -71,31 +70,49 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                    <th>No</th>
                     <th>Posisi</th>
                     <th>Dept</th>
                     <th>Kuota</th>
+                    <!--<th>Gambar</th>-->
                     <th>Action</th>
                   </tr>
                   </thead>
-                  <tbody>
+                <tbody>
+                <?php $no = 1;
+            foreach ($jabatan_kosong as $jk) : ?>
+                    <tr>
+                        <td><?php echo $no++ ?></td>
+                        <td><?php echo $jk->posisi_kosong ?></td>
+                        <td><?php echo $jk->departemen_kosong ?></td>
+                        <td><?php echo $jk->kuota ?></td>
+                        <!--<td>
+                            <img src="<?php echo base_url(); ?>upload/<?php echo $jk->foto; ?>" alt="" width="90" height="100">
+                        </td>-->
+                        <td>
+                            <!-- <button type="button" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></button> -->
+
+                            <?php echo anchor('superadmin/input/edit/' . $jk->id, ' <button type="button" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></button>') ?>
+
+                            <?php echo anchor('superadmin/input/hapus/' . $jk->id, '<button type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="far fa-trash-alt"></i></button>') ?>
+
+
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+                <tfoot>         
                   <tr>
-                    <td>Engineer</td>
-                    <td>admin</td>
-                    <td>2</td>
-                    <td>
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg"><i class="nav-icon fas fa-pencil-alt"></i></button>
-                      <button class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                  <tfoot>
-                  <tr>
+                    <th>No</th>
                     <th>Posisi</th> 
                     <th>Dept</th>
                     <th>Kuota</th>
+                <!--<th>Gambar</th>-->
                     <th>Action</th>
                   </tr>
                   </tfoot>
                 </table>
+               
               </div>
               <!-- /.card-body -->
             </div>
@@ -103,61 +120,3 @@
     </section>
     <!-- /.content -->
   </div>
-
-
-
-  <!-- /.modal -->
-
-  <div class="modal fade" id="modal-lg">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Edit Kekosongan Jabatan</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        <div class="card card-primary">
-              <!-- form start -->
-              <form>
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="posisi">Posisi</label>
-                    <input type="text" class="form-control" id="posisi" placeholder="posisi">
-                  </div>
-                  <div class="form-group">
-                    <label for="Dept">Dept</label>
-                    <input type="text" class="form-control" id="Dept" placeholder="departement">
-                  </div>
-                  <div class="form-group">
-                    <label for="Kuota">Kuota</label>
-                    <input type="number" class="form-control" id="Kuota" placeholder="Kuota">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">Upload Gambar</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-              </form>
-         </div>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-      <!-- /.modal -->

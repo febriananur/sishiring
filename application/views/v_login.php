@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="<?= base_url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css')?>">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('assets/dist/css/adminlte.min.css')?>">
+  <!-- Favicons -->
+  <link href="<?= base_url("assets/logo/logo.png")?>" rel="icon">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -28,7 +32,7 @@
       <form action="<?= base_url("Login/cek_login") ?>" method="post">
       <img src="<?= base_url("assets/logo/logo.png") ?>" style="width:120px; height:auto; margin-bottom:80px;" alt="">
         <div class="input-group mb-3">
-          <input type="text" name="id" class="form-control " placeholder="TT">
+          <input type="text" name="username" class="form-control " placeholder="USERNAME">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -36,7 +40,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="pw" class="form-control" placeholder="PW">
+          <input type="password" name="password" class="form-control" placeholder="PASSWORD">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

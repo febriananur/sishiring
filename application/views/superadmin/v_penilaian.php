@@ -40,17 +40,22 @@
                   </tr>
                   </thead>
                   <tbody>
+                  <?php
+                  $q = $this->db->get('jabatan_kosong');
+											$no = 1;
+											foreach ($q->result_array() as $jabatan_kosong) : ?>
                   <tr>
-                    <td>Engineer</td>
-                    <td>admin</td>
-                    <td>2</td>
+                    <td><?= $jabatan_kosong['posisi_kosong']; ?></td>
+                    <td><?= $jabatan_kosong['departemen_kosong']; ?></td>
+                    <td><?= $jabatan_kosong['kuota']; ?></td>
                     <td>
-                      <a href="<?= base_url('/superadmin/Penilaian_kandidat')?>">
+                      <a href="<?= base_url('/superadmin/penilaian_kandidat')?>">
                         <button class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></button>
                       </a>
                     </td>
                     <td>Buka</td>
                   </tr>
+                  <?php endforeach ?>
                   <tfoot>
                   <tr>
                     <th>Posisi</th> 

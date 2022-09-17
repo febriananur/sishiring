@@ -26,6 +26,11 @@
               <div class="card-header">
                 <h3 class="card-title">Data Karyawan</h3>
               </div>
+              <div class="card-header">
+              <a href="<?= base_url('admin_hr/promosi/promosi_kandidat')?>">
+                        <button class="btn btn-warning"><i class="nav-icon fas fa-eye"> Lihat Data Promosi Kandidat</i></button>
+                      </a>
+</div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -44,18 +49,21 @@
                   </tr>
                   </thead>
                   <tbody>
+                  <?php foreach($karyawan_list as $key => $karyawan) { ?>
                   <tr>
-                    <td>1</td>
-                    <td>tt001</td>
-                    <td>yeni</td>
-                    <td>Maintenance</td>
-                    <td>admin</td>
-                    <td>10</td>
-                    <td>2</td>
-                    <td>0</td>
-                    <td>2</td>
-                    <td><button class="btn btn-danger"> <i class="fas fa-trash"></i></button></td>
+                    <td><?= $key+1 ?></td>
+                    <td><?= $karyawan['id'] ?></td>
+                    <td><?= $karyawan['nama'] ?></td>
+                    <td><?= $karyawan['departemen'] ?></td>
+                    <td><?= $karyawan['posisi'] ?></td>
+                    <td><?= $karyawan['sakit'] ?></td>
+                    <td><?= $karyawan['izin'] ?></td>
+                    <td><?= $karyawan['hadir'] ?></td>
+                    <td><?= $karyawan['alpha'] ?></td>
+                    <td><?php  echo anchor('superadmin/upload/delete/'.$karyawan['id'], '<button class="btn btn-danger margin" type="button"><span class="fa fa-trash"></span> </button>'); ?>
+                  </td>
                   </tr>
+                  <?php } ?> 
                   <tfoot>
                   <tr>
                     <th>No</th>
@@ -70,6 +78,7 @@
                     <th>Action</th>
                   </tr>
                   </tfoot>
+                                   
                 </table>
               </div>
               <!-- /.card-body -->

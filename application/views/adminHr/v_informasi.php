@@ -21,20 +21,26 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+      <?php
+        $this->db->select('promosi.id, jadwal, karyawan.id_karyawan, nama, departemen_kosong, posisi_kosong, departemen, posisi, status');
+        $this->db->join('jabatan_kosong', 'jabatan_kosong.id = promosi.id_jabatan_kosong');
+        $this->db->join('karyawan','karyawan.id = promosi.id_karyawan');
+        $q = $this->db->get('promosi');
+				foreach ($q->result_array() as $promosi) : ?>
         <!-- /.row (main content) -->
         <div class="callout callout-info">
           <div class="row">
               <div class="col-6">
-                <h5> yeni</h5>
-                <p>Status : Lolos</p>
+                <h5><?= $promosi['nama']; ?> - <?= $promosi['posisi_kosong']; ?> (<?= $promosi['departemen_kosong']; ?>)</h5>
+                <p>Status : <?= $promosi['status']; ?></p>
               </div>
               <div class="col-6">
-                <p class="text-right">13:00 09/09/2022</p>
+                <p class="text-right"><?= $promosi['jadwal']; ?></p>
               </div>
           </div>             
         </div>  
-
-        <div class="callout callout-info">
+        <?php endforeach ?>
+        <!--<div class="callout callout-info">
           <div class="row">
               <div class="col-6">
                 <h5> yeni</h5>
@@ -43,9 +49,9 @@
               <div class="col-6">
                 <p class="text-right">13:00 09/09/2022</p>
               </div>
-          </div>             
+          </div>-->             
         </div>  
-
+        
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
