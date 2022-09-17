@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="<?= base_url('admin_hr/Dashboard')?>" class="brand-link">
       <img src="<?= base_url('assets/logo/logo.png')?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">PT TK Industrial ID</span>
+      <span class="brand-text font-weight-light">PT. TK Industrial ID</span>
     </a>
 
     <!-- Sidebar -->
@@ -46,7 +46,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="<?= base_url("Login") ?>" class="nav-link">
               <i class="nav-icon fas fa-arrow-right"></i>
               <p>
                 Logout

@@ -49,6 +49,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
 $route['default_controller'] = 'login';
+/* WAJIB BACA !!!
+=======
+// $route['namaroute'] = 'NAMAFOLDER/NAMACONTROLLER/NAMAMETHOD */
+// URL ACCESS LOGIN ======================================================
+//$route['loginsuperadmin']         =   'login/superadmin'; // ACCESS URL LOGIN Super Admin AS DEFAULT
+//$route['loginadminhr']    =   'login/adminhr'; // 
+
+// =======================================================================
+
+// URL LOGOUT
+//$route['logout']                =   'login/logout';
+
+// ========== FORM ACTION LOGIN =======================
+//$route['authsuperadmin'] =   'login/superadmin';
+//$route['authadminhr']     =   'login/adminhr';
+//=====================================================
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+//=====================================================
